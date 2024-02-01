@@ -9,6 +9,17 @@
                 <li><a href="#">À propos</a></li>
                 <li><a href="#">Recrutement</a></li>
                 <li><a href="#">Contact</a></li>
+                <li>
+                    <?php
+                    // Vérifiez si l'utilisateur est connecté
+                    // Si non, affichez le lien de connexion
+                    if (!isset($_SESSION['user'])) {
+                        echo '<a href="login.php">Login</a>';
+                    } else {
+                        echo '<strong>Hello ' . $_SESSION['user'] . '!</strong>';
+                    }
+                    ?>
+                </li>
             </ul>
         </div>
     </nav>

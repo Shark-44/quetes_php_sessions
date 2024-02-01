@@ -1,5 +1,26 @@
 <?php require 'inc/data/products.php'; ?>
-<?php require 'inc/head.php'; ?>
+<?php require 'inc/head.php'; 
+if (isset($_GET['add_to_cart'])) {
+    // recuperation de produitID
+    $productId = $_GET['add_to_cart'];
+
+    // Merci chatgpt
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = array();
+    }
+
+    // Ajout d'un produit dans Session['cart'] ou mon panier
+    if (isset($_SESSION['cart'][$productId])) {
+        $_SESSION['cart'][$productId]++;
+    } else {
+        $_SESSION['cart'][$productId] = 1;
+    }
+
+    header("Location: index.php");
+    exit();
+}
+?>
+
 <section class="cookies container-fluid">
     <div class="row">
         <?php foreach ($catalog as $id => $cookie) { ?>
@@ -18,4 +39,5 @@
         <?php } ?>
     </div>
 </section>
+
 <?php require 'inc/foot.php'; ?>

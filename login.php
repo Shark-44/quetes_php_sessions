@@ -1,4 +1,17 @@
-<?php require 'inc/head.php'; ?>
+<?php
+require 'inc/head.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    session_start();
+
+    $username = "joe";
+
+    $_SESSION['user'] = $username;
+
+    header("Location: index.php");
+    exit();
+}
+?>
 <div class="container" style="margin-top:40px">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
